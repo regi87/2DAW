@@ -1,51 +1,40 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Actividad 01</title>
 </head>
-
 <body>
-
     <?php
-    $contador = 1;
-    $i = 0;
-
-
-    for($j=1; $j<= 3; $j++)
-    {
-        
-        for($i=0; $i<= $j; $i++)
+    $contador = 0;
+    $contador_2 = 0;
+     
+        for($j=1; $j<= 256; $j++)
         {
-            echo  $i. $j ;
-            echo "<br>";
-        }   
-        
-    }
-
-
-
-
-    /*
-    for($j=0; $j<= 5; $j++)
-    {
-
-        if($contador === 4)
-        { 
-            $z = $z+1;
-            $contador = 1;
+            for($i= $contador; $i<= $j; $i++)
+            {
+                for($z= $contador_2; $z<= $i; $z++)
+                {
+                    ?>
+                    <div style="background-color:rgb( <?php echo $z.','.$i.','.$j;?>)">
+                    <?php echo $z.','.$i.','.$j;?>
+                    </div>
+                    <?php
+                     echo "<br>";
+                 }
+            }   
+            $contador +=1;
+            $contador_2 += 1;
         }
-        $contador += 1;
-
-        echo $z .'0'. $j ;
-        echo "<br>";
-            
-        
-    }*/
-
+       
+        for($w=0; $w <= 255; $w++)
+        {
+            ?>
+            <div style="background-color:rgb( <?php echo '0'.','.$w.','.'0';?>)">
+            <?php echo '0'.','.$w.','.'0';?>
+            </div>
+            <?php
+             echo "<br>";
+        }
     ?>
-
-
 </body>
-
 </html>

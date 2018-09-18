@@ -1,0 +1,19 @@
+{
+  "name": "proyecto_1",
+  "version": "1.0.0",
+  "description": "Primer proyecto con Node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-js": "browserify –t [babelify] index.js –o bundle.js",
+    "build": "node index.js"
+
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "babelify": "^10.0.0"
+  }
+ 
+}
