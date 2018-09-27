@@ -1,7 +1,15 @@
-
+/**
+ * Función nos devuelve si el número es par
+ * @param {True o false} x 
+ */
 function par(x){
     return x%2 == 0;
 }
+/**
+ * Función sumatoria de los elementos
+ * @param {*} a 
+ * @param {*} b 
+ */
 function suma(a,b){
     return a+b;
 }
