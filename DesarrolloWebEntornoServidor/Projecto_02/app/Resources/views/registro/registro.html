@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    
+        form {
+            border: 3px solid #f1f1f1;
+        }
+        input[type=number],
+        input[type=text],
+        input[type=password] {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        
+        select {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+    
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 50%;
+        }
+    
+        button:hover {
+            opacity: 0.8;
+        }
+    
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+    
+        img.avatar {
+            width: 10%;
+            border-radius: 50%;
+        }
+    
+        .container {
+            padding: 16px;
+        }   
+    
+        }
+    </style>
+
+    <title>Modern Business - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">Start Bootstrap</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+        <form>
+            <div align="center">
+                <div class="imgcontainer">
+                    <img src="../Imagenes/LoginIcon.png" alt="Avatar" class="avatar">
+                </div>
+                <div class="container">
+                    <input type="text" placeholder="Apellidos" name="apellidos">
+                    <input type="text" placeholder="Dirección" name="direccion">
+                    <input type="number" placeholder="Telefono de Contacto" name="telefono">
+                    <input type="number" placeholder="Telefono de Contacto 2" name="telefono_2">
+                    <input type="text" placeholder="Nombre Empresa" name="nombre_empre">
+                    <div>
+                        <label>Tipo de Actividad del Negocio</label>
+                    </div>
+                    <select class="select" placeholder="Tipo de Actividad" name="tipo_actividad">
+                        <option>Ocio</option>
+                        <option>Deporte</option>
+                        <option>Alimentación</option>
+                    </select>
+                    <div>
+                        <label>Seleccione la opción publicitaria</label>
+                    </div>
+                    <select placeholder="Selecciona la opción publicitaria" name="tipo_publi">
+                        <option>Gratuita</option>
+                        <option>Tipo 1</option>
+                        <option>Tipo 2</option>
+                    </select>
+                    <input type="text" placeholder="Nombre Usuario" name="user_name">
+                    <input type="text" placeholder="Contaseña" name="psw">
+                    <input type="text" placeholder="Confirmar Contaseña" name="psw_2">
+                </div>
+            </div>
+        </form>
+        <div align="center">
+            <button onclick="window.location.href='insercionInfo.html'">Registrarse</button>
+            <br><br>
+            <button onclick="window.location.href='../../index.html'">
+                Volver
+            </button>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Regino Bosch Lozano</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
