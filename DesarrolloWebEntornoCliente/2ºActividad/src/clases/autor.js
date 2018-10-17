@@ -3,8 +3,18 @@ class autor {
     constructor() {
         this.nombre = "";
         this.apellidos = 0;
-        this.autores = [];
-        this.id = 0;
+       
+        //Inicializamos con el JSON
+        this.autores = require('../json/autores.json');
+        //Variables JSON
+         //guardamos la información en JSON
+         this.fs = require('fs');
+         this.json = {};
+         //comprobamos si hay autores guardados o no
+         if(this.autores[0] !== undefined)
+            this.id = this.autores[this.autores.length - 1].id;     
+         else
+             this.id = 0;     
     }
     //introduce el nombre
     setNombre(_nombre) {
@@ -31,6 +41,10 @@ class autor {
         this.id++;
         _autor.id = this.id;
         this.autores.push(_autor);
+
+        //guardamos la información en JSON
+        this.json = JSON.stringify(this.autores);
+        this.fs.writeFileSync('../src/json/autores.json', this.json, 'utf8');
     }
     //devuelve array
     getAutores() {
@@ -44,6 +58,10 @@ class autor {
     modificarAutor(i, _autor) {
         this.autores[i].nombre = _autor.nombre;
         this.autores[i].apellidos = _autor.apellidos;
+
+        //guardamos la información en JSON
+        this.json = JSON.stringify(this.autores);
+        this.fs.writeFileSync('../src/json/autores.json', this.json, 'utf8');
     }
     //elimina autor
     eliminarAutor(i) {
