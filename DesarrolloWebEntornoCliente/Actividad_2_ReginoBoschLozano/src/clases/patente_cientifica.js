@@ -7,11 +7,12 @@ class patente_cientifica {
         this.anyo_vencimiento = _anyo_vencimiento;
         this.id_autor = _idAutor;
     }
-
+    //introduce el nombre de la patente
     setNombre(_nombre)
     {
         this.nombre = _nombre;
     }
+    //devuelve el nombre de la patente
     getNombre()
     {
         return this.nombre;

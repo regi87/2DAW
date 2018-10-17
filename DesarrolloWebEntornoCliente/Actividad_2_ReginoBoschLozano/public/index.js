@@ -7,14 +7,15 @@ const articulos_conferencia = require("../src/clases/articulos_conferencia").art
 const rl = require('readline-sync');
 listados = new listados();
 //Indices
-var id_Autor = 0;
+var id_Autor = listados.getId();
 //Inicio
 menuPrincipal();
 ////MENUS PRINCIPALES //////
 //Menu Principal
 function menuPrincipal() {
     let opcion = "";
-    while (opcion !== 1 && opcion !== 2 && opcion !== 3 && opcion !== 4 && opcion !== 5) {
+
+    while (opcion !== 1 && opcion !== 2 && opcion !== 3 && opcion !== 4 && opcion !== 5 && opcion !== 6 && opcion !== 7 && opcion !== 8) {
         opcion = rl.question('Introduce la accion a realizar:\n' +
             '1) Añadir\n' +
             '2) Modificar\n' +
@@ -47,6 +48,7 @@ function menuPrincipal() {
             indiceH();
         }
         else if (opcion === '8') {
+            listados.salir();
             break;
         }
     }
@@ -62,7 +64,7 @@ function menuAyadir() {
             introduceAutores();
         }
         else if (opcion === '2') {
-            menuPrincipal();
+            return;
         }
     }
 }
@@ -90,7 +92,7 @@ function menuModificar() {
             modificarArticulo("conferencia");
         }
         else if (opcion === '5') {
-            menuPrincipal();
+            return;
         }
     }
 }
@@ -118,7 +120,7 @@ function menuBaja() {
             baja("conferencia");
         }
         else if (opcion === '5') {
-            menuPrincipal();
+            return;
         }
     }
 }
@@ -146,7 +148,7 @@ function menuBuscar() {
             buscarAutorAnyioPubliTipo();
         }
         else if (opcion === '5') {
-            menuPrincipal();
+            return;
         }
     }
 }
@@ -158,14 +160,12 @@ function introduceAutores() {
     let nombre = rl.question("Introduce el nombre de un nuevo autor:");
     let apellidos = rl.question("Introduce el apellido del nuevo autor:");
     console.log("\n");
-    id_Autor++;
     let _autor = new autor(nombre, apellidos, id_Autor);
     //añadimos información al autor
     _autor.setNombre(nombre);
     _autor.setApellidos(apellidos);
     //añadimos al listado el objeto a un array
     listados.setAutores(_autor.getAutor());
-    console.log(listados.getAutores());
     let opcion = "";
     while (opcion !== 1 && opcion !== 2 && opcion !== 3) {
         opcion = rl.question('Introduce la accion a realizar:\n' +
@@ -180,7 +180,7 @@ function introduceAutores() {
             introduceArticulo(id_Autor);
         }
         else if (opcion === '3') {
-            menuAyadir();
+            return;
         }
     }
 }
@@ -216,7 +216,7 @@ function introducePatente(_idAutor) {
             introduceAutores();
         }
         else if (opcion === '4') {
-            menuPrincipal();
+            return;
         }
     }
 }
@@ -237,7 +237,7 @@ function introduceArticulo(_idAutor) {
             introduceArticuloTipo(_idAutor, "conferencia");
         }
         else if (opcion === '3') {
-            menuAyadir();
+            return;
         }
     }
 }
@@ -286,7 +286,7 @@ function introduceArticuloTipo(_idAutor, tipo) {
                 introduceAutores();
             }
             else if (opcion === '5') {
-                menuPrincipal();
+                return;
             }
         }
     }
@@ -325,7 +325,7 @@ function introduceArticuloTipo(_idAutor, tipo) {
                 introduceAutores();
             }
             else if (opcion === '5') {
-                menuPrincipal();
+                return;
             }
         }
     }
@@ -337,55 +337,58 @@ function modificarAutor() {
     let autores = listados.getAutores();
     let pregunta = rl.question("Introduce el nombre del autor que quieras buscar :");
     console.log("\n");
-    let id = "";
-    let indice = "";
-
-    for (let autor in autores) {
-        if (autores[autor].nombre === pregunta) {
-            id = autor.id;
-            indice = autor;
+    let autorEncontrat = undefined;
+    let contador = 0;
+    for (let autor of autores) {
+        contador++;
+        if (autor.nombre === pregunta) {
+            autorEncontrat = autor;
             break;
         }
     }
-    if (indice === "") {
+    if (!autorEncontrat) {
         console.log("No se ha encontrado o no existe el autor buscado\n");
         return;
     }
     let nombre = rl.question("Introduce el nuevo nombre :");
     let apellidos = rl.question("Introduce el nuevo apellido :");
     //modificamos los campos
-    autor.setNombre(nombre);
-    autor.setApellidos(apellidos);
+    let autorModi = { "nombre": nombre, "apellidos": apellidos, "id":autorEncontrat.id };
+    //restamos -1 a contador
+    contador = contador - 1;
     //modificamos listado
-    listados.modificar(indice, autor.getAutor(), "autores");
-    menuPrincipal();
+    listados.modificar(contador, autorModi, "autores");
+    return;
 }
 //Modificación de la Patente
 function modificarPatente() {
     let patentes = listados.getPatentes();
     let pregunta = rl.question("Introduce el nombre de la patente que quieras buscar :");
     console.log("\n");
-    let indice = "";
-    for (let patente in patentes) {
-        if (patentes[patente].nombre === pregunta) {
-            indice = patente;
+    let patenteEncontrat = undefined;
+    let contador = 0;
+
+    for (let patente of patentes) {
+        if (patente.nombre === pregunta) {
+            patenteEncontrat = patente;
+            contador++;
             break;
         }
     }
-    if (indice === "") {
+    if (!patenteEncontrat) {
         console.log("No se ha encontrado o no existe la patente buscada\n");
         return;
     }
     let nombre = rl.question("Introduce el nuevo nombre de la patente :");
     let anyo_publi = rl.question("Introduce el año de publicación de la patente :");
     let anyo_vencimiento = rl.question("Introduce el año de vencimiento de la patente :");
+    //restamos -1 a contador
+    contador = contador - 1;
     //modificamos los campos
-    patente_cientifica.setNombre(nombre);
-    patente_cientifica.setAnyoPubli(anyo_publi);
-    patente_cientifica.setAnyoVencimiento(anyo_vencimiento);
+    let patenteModi = { "nombre": nombre, "anyo_publi": anyo_publi, "anyo_vencimiento": anyo_vencimiento, "id_autor":patenteEncontrat.id_autor };
     //modificamos listado
-    listados.modificar(indice, patente_cientifica.getPatente(), "patentes");
-    menuPrincipal();
+    listados.modificar(contador, patenteModi, "patentes");
+    return;
 }
 //Modificación de los articulos
 function modificarArticulo(_tipo) {
@@ -397,16 +400,19 @@ function modificarArticulo(_tipo) {
 
     let pregunta = rl.question("Introduce el nombre del artículo que quieras buscar :");
     console.log("\n");
-    let indice = "";
+    let patenteEncontrat = undefined;
+    let contador = 0;
     let id_autor = 0;
-    for (let articulo in articulos) {
-        if (articulos[articulo].title === pregunta) {
-            indice = articulo;
-            id_autor = articulos[articulo].id_autor;
+
+    for (let articulo of articulos) {
+        if (articulo.title === pregunta) {
+            patenteEncontrat = articulo;
+            contador++;
+            id_autor = articulo.id_autor;
             break;
         }
     }
-    if (indice === "") {
+    if (!patenteEncontrat) {
         console.log("No se ha encontrado o no existe el artículo buscado\n");
         return;
     }
@@ -418,33 +424,30 @@ function modificarArticulo(_tipo) {
     if (_tipo === "revista") {
         let nombre_conf = rl.question("Introduce el nombre de la conferencia :");
         let celebracion = rl.question("Introduce el nombre de la celebración :");
-        let _articulos_revista = new articulos_revista(title, num_paginas, anyo_publi, num_menciones, nombre_conf, celebracion, id_autor);
+       
+        //restamos -1 a contador
+        contador = contador - 1;
         //modificamos los campos
-        _articulos_revista.setTitulo(title);
-        _articulos_revista.setNum_paginas(num_paginas);
-        _articulos_revista.setAnyo_publi(anyo_publi);
-        _articulos_revista.setNum_menciones(num_menciones);
-        _articulos_revista.setNombreConf(nombre_conf);
-        _articulos_revista.setCelebracion(celebracion);
+        let articuloModi = { "title": title, "num_paginas": num_paginas, "anyo_publi": anyo_publi, "num_menciones": num_menciones, "nombre_conf": nombre_conf, "celebracion": celebracion, "id_autor":id_autor };
+
         //actualizamos listado
-        listados.modificar(indice, _articulos_revista.getArticulo(), "revistas");
+        listados.modificar(contador, articuloModi, "revistas");
     }
     //si es Artículo Conferencia
     else {
         let factor_impacto = rl.question("Introduce el factor de impacto :");
         let editorial = rl.question("Introduce el nombre de la editorial :");
-        let _articulos_conferencia = new articulos_conferencia(title, num_paginas, anyo_publi, num_menciones, factor_impacto, editorial, id_autor);
+      
+
+        //restamos -1 a contador
+        contador = contador - 1;
         //modificamos los campos
-        _articulos_conferencia.setTitulo(title);
-        _articulos_conferencia.setNum_paginas(num_paginas);
-        _articulos_conferencia.setAnyo_publi(anyo_publi);
-        _articulos_conferencia.setNum_menciones(num_menciones);
-        _articulos_conferencia.setFactImp(factor_impacto);
-        _articulos_conferencia.setEditorial(editorial);
+        let articuloModi = { "title": title, "num_paginas": num_paginas, "anyo_publi": anyo_publi, "num_menciones": num_menciones, "factor_impacto": factor_impacto, "editorial": editorial, "id_autor":id_autor };
+
         //actualizamos listado
-        listados.modificar(indice, _articulos_conferencia.getArticulo(), "conferencia");
+        listados.modificar(contador, articuloModi, "conferencia");
     }
-    menuPrincipal();
+    return;
 }
 //MENUS SECUNDARIOS MODIFICACIÓN DE DATOS
 //MENUS SECUNDARIOS BAJAS
@@ -472,14 +475,14 @@ function baja(_tipo) {
 
     console.log("\n");
     let indice = "";
-    for (let _indice in array) {
+    for (let _indice of array) {
         if (_tipo === "autor" || _tipo === "patente") {
-            if (array[_indice].nombre === pregunta) {
+            if (_indice.nombre === pregunta) {
                 indice = _indice;
                 break;
             }
         }
-        else if (array[_indice].title === pregunta) {
+        else if (_indice.title === pregunta) {
             indice = _indice;
             break;
         }
@@ -498,13 +501,13 @@ function buscarAutor() {
     let pregunta = rl.question("Introduce el autor a buscar :");
 
     if (autores[0] !== undefined)
-        for (let autor in autores) {
-            if (pregunta === autores[autor].nombre) {
-                console.log("Nombre : " + autores[autor].nombre);
-                console.log("Apellidos : " + autores[autor].apellidos + "\n");
+        for (let autor of autores) {
+            if (pregunta === autor.nombre) {
+                console.log("Nombre : " + autor.nombre);
+                console.log("Apellidos : " + autor.apellidos + "\n");
             }
             else
-                console.log("No se ha encontrado o no existe");
+                console.log("No se ha encontrado o no existe\n");
         }
     else {
         console.log("No hay resultados\n");
@@ -520,10 +523,10 @@ function buscarAnyoPubli() {
     let encontrado = false;
 
     if (_articuloRevista[0] !== undefined)
-        for (let articulo in _articuloRevista) {
-            if (pregunta === _articuloRevista[articulo].anyo_publi) {
+        for (let articulo of _articuloRevista) {
+            if (pregunta === articulo.anyo_publi) {
                 encontrado = true;
-                console.log("\nArticulo Revista : " + _articuloRevista[articulo].title);
+                console.log("\nArticulo Revista : " + articulo.title);
             }
         }
     if (encontrado === false) {
@@ -532,10 +535,10 @@ function buscarAnyoPubli() {
     }
     encontrado = false;
     if (_articulos_conferencia[0] !== undefined)
-        for (let articulo in _articulos_conferencia) {
-            if (pregunta === _articulos_conferencia[articulo].anyo_publi) {
+        for (let articulo of _articulos_conferencia) {
+            if (pregunta === articulo.anyo_publi) {
                 encontrado = true;
-                console.log("\nArticulo Conferencia : " + _articulos_conferencia[articulo].title);
+                console.log("\nArticulo Conferencia : " + articulo.title);
             }
         }
     if (encontrado === false) {
@@ -544,10 +547,10 @@ function buscarAnyoPubli() {
     }
     encontrado = false;
     if (patentes[0] !== undefined)
-        for (let patente in patentes) {
-            if (pregunta === patentes[patente].anyo_publi) {
+        for (let patente of patentes) {
+            if (pregunta === patente.anyo_publi) {
                 encontrado = true;
-                console.log("\nNombre Patente : " + patentes[patente].nombre + "\n");
+                console.log("\nNombre Patente : " + patente.nombre + "\n");
             }
         }
     if (encontrado === false) {
@@ -566,8 +569,8 @@ function buscarTipoPubli() {
     if (pregunta === "A") {
         arrayLista = listados.getArticulos("revista");
         if (arrayLista.length !== 0) {
-            for (let articulo in arrayLista)
-                console.log("Artículo Revista : " + arrayLista[articulo].nombre + "  " + "Año :" + arrayLista[articulo].anyo_publi);
+            for (let articulo of arrayLista)
+                console.log("Artículo Revista : " + articulo.title + "  " + "Año :" + articulo.anyo_publi);
         }
         else
             console.log("No hay artículos de revista");
@@ -575,8 +578,8 @@ function buscarTipoPubli() {
     else if (pregunta === "B") {
         arrayLista = listados.getArticulos("conferencia");
         if (arrayLista.length !== 0) {
-            for (let articulo in arrayLista)
-                console.log("Artículo Conferencia : " + arrayLista[articulo].nombre + "  " + "Año :" + arrayLista[articulo].anyo_publi);
+            for (let articulo of arrayLista)
+                console.log("Artículo Conferencia : " + articulo.title + "  " + "Año :" + articulo.anyo_publi);
         }
         else
             console.log("No hay artículos de revista");
@@ -584,8 +587,8 @@ function buscarTipoPubli() {
     else {
         arrayLista = listados.getPatentes();
         if (arrayLista.length !== 0) {
-            for (let articulo in arrayLista)
-                console.log("Nombre Patente : " + arrayLista[articulo].nombre + "  " + "Año :" + arrayLista[articulo].anyo_publi);
+            for (let articulo of arrayLista)
+                console.log("Nombre Patente : " + articulo.nombre + "  " + "Año :" + articulo.anyo_publi);
         }
         else
             console.log("No hay artículos de revista");
@@ -604,11 +607,11 @@ function buscarAutorAnyioPubliTipo() {
     let _autor = [];
 
     if (autores.length > 0) {
-        for (let autor in autores) {
-            if (pregunta_1 === autores[autor].nombre) {
-                id_autor = autores[autor].id;
-                _autor[0] = { "id": autores[autor].id, "nombre": autores[autor].nombre };
-                console.log("\n Autor : " + autores[autor].nombre);
+        for (let autor of autores) {
+            if (pregunta_1 === autor.nombre) {
+                id_autor = autor.id;
+                _autor[0] = { "id": autor.id, "nombre": autor.nombre };
+                console.log("\n Autor : " + autor.nombre);
             }
             else {
                 console.log("No se ha encontrado el autor\n");
@@ -622,10 +625,10 @@ function buscarAutorAnyioPubliTipo() {
     }
     if (pregunta_2 === "patente") {
         if (patentes.length > 0) {
-            for (let patente in patentes) {
-                if (_autor[0].id === patentes[patente].id_autor && patentes[patente].anyo_publi === pregunta_3) {
-                    patentes[patente] = { "nombre": patentes[patente].nombre, "anyo_publi": patentes[patente].anyo_publi };
-                    console.log("Patente: " + patentes[patente].nombre + "\n");
+            for (let patente of patentes) {
+                if (_autor[0].id === patente.id_autor && patente.anyo_publi === pregunta_3) {
+                    patentes[patente] = { "nombre": patente.nombre, "anyo_publi": patente.anyo_publi };
+                    console.log("Patente: " + patente.nombre + "\n");
                 }
                 else {
                     console.log("No se ha encontrado la patente\n");
@@ -640,9 +643,9 @@ function buscarAutorAnyioPubliTipo() {
     }
     if (pregunta_2 === "articulo") {
         if (_articuloRevista.length > 0) {
-            for (let articulo in _articuloRevista) {
-                if (_autor[0].id === _articuloRevista[articulo].id_autor && pregunta_3 === _articuloRevista[articulo].anyo_publi) {
-                    console.log("Articulo Revista: " + _articuloRevista[articulo].title);
+            for (let articulo of _articuloRevista) {
+                if (_autor[0].id === articulo.id_autor && pregunta_3 === _articulo.anyo_publi) {
+                    console.log("Articulo Revista: " + articulo.title);
                 }
                 else {
                     console.log("No se ha encontrado artículos de revista\n");
@@ -653,9 +656,9 @@ function buscarAutorAnyioPubliTipo() {
             console.log("No hay artículos de revista\n");
         }
         if (_articulos_conferencia.length > 0)
-            for (let articulo in _articulos_conferencia) {
-                if (_autor[0].id === _articulos_conferencia[articulo].id_autor && pregunta_3 === _articulos_conferencia[articulo].anyo_publi) {
-                    console.log("Articulo Conferencia: " + _articulos_conferencia[articulo].title + "\n");
+            for (let articulo of _articulos_conferencia) {
+                if (_autor[0].id === articulo.id_autor && pregunta_3 === articulo.anyo_publi) {
+                    console.log("Articulo Conferencia: " + articulo.title + "\n");
                 }
                 else {
                     console.log("No se ha encontrado artículos de conferencia\n");
@@ -688,20 +691,20 @@ function numProduccionesCientíficas() {
     else {
         console.log("\n");
     }
-    for (let autor in autores) {
-        if (autores[autor].nombre === nombrePreg)
-            id_autor = autores[autor].id;
+    for (let autor of autores) {
+        if (autor.nombre === nombrePreg)
+            id_autor = autor.id;
     }
-    for (let patente in patentes) {
-        if (id_autor === patentes[patente].id_autor)
+    for (let patente of patentes) {
+        if (id_autor === patente.id_autor)
             contadorPatente++;
     }
-    for (let articulo in _articulos_revista) {
-        if (id_autor === _articulos_revista[articulo].id_autor)
+    for (let articulo of _articulos_revista) {
+        if (id_autor === articulo.id_autor)
             contadorArtRevis++;
     }
-    for (let articulo in _articulos_conferencia) {
-        if (id_autor === _articulos_conferencia[articulo].id_autor)
+    for (let articulo of _articulos_conferencia) {
+        if (id_autor === articulo.id_autor)
             contadorArtConf++;
     }
     console.log("Autor : " + nombrePreg + "\n" + "Número de Patentes: " + contadorPatente + "\n" + "Número de Artículos de Revista: " + contadorArtRevis + "\n" + "Número de Artículos de Conferencia: " + contadorArtConf + "\n");
@@ -710,23 +713,23 @@ function numProduccionesCientíficas() {
 function factordeImpacto() {
     let nombrePreg = rl.question("Introduce el nombre del autor para calcular el factor de impacto:");
     let anyoPregu = rl.question("Introduce el año para calcular el factor de impacto:");
-    let id_autor = 0;
+    let id_autor = -1;
     let _articulos_conferencia = listados.getArticulos("conferencia");
     let autores = listados.getAutores();
     let factor_impacto_conferencia = 0;
 
-    for (let autor in autores) {
-        if (autores[autor].nombre === nombrePreg)
-            id_autor = autores[autor].id;
+    for (let autor of autores) {
+        if (autor.nombre === nombrePreg)
+                id_autor = autor.id;
     }
-
-    if (id_autor === 0) {
+    console.log(id_autor);
+    if (id_autor === -1) {
         console.log("\nNo se ha encontrado el autor \n");
         return;
     }
-    for (let articulo in _articulos_conferencia) {
-        if (id_autor === _articulos_conferencia[articulo].id_autor && anyoPregu === _articulos_conferencia[articulo].anyo_publi)
-            factor_impacto_conferencia += parseInt(_articulos_conferencia[articulo].factor_impacto);
+    for (let articulo of _articulos_conferencia) {
+        if (id_autor === articulo.id_autor && anyoPregu === articulo.anyo_publi)
+            factor_impacto_conferencia += parseInt(articulo.factor_impacto);
     }
     console.log("\nbAutor : " + nombrePreg + "\n" + "Factor de Impacto: " + factor_impacto_conferencia + "\n");
 }
@@ -739,15 +742,17 @@ function indiceH() {
     let autores = listados.getAutores();
     let arrayArtRevista = [];
     let arrayArtConferencia = [];
-
-    for (let autor in autores) {
-        if (autores[autor].nombre === nombrePreg)
-            id_autor = autores[autor].id;
+    let contador = 0;
+    for (let autor of autores) {
+        if (autor.nombre === nombrePreg)
+            id_autor = autor.id;
     }
     if (_articulos_conferencia.length > 0) {
-        for (let articulo in _articulos_conferencia) {
-            if (id_autor === _articulos_conferencia[articulo].id_autor)
-                arrayArtConferencia[articulo] = _articulos_conferencia[articulo];
+        for (let articulo of _articulos_conferencia) {
+            if (id_autor === articulo.id_autor)
+                arrayArtConferencia[contador] = _articulos_conferencia[contador];
+                contador++;
+
         }
         arrayArtConferencia.sort(function (a, b) {
             return (b.num_menciones - a.num_menciones)
@@ -755,15 +760,18 @@ function indiceH() {
         if (arrayArtConferencia.length > 1)
             console.log("Articulo Conferencia Indice H: " + arrayArtConferencia[arrayArtConferencia.length - 2].num_menciones + "\n");
     }
+    contador = 0;
     if (_articulos_revista.length > 0) {
-        for (let articulo in _articulos_revista) {
-            if (id_autor === _articulos_revista[articulo].id_autor)
-                arrayArtRevista[articulo] = _articulos_revista[articulo];
+        for (let articulo of _articulos_revista) {
+            if (id_autor === articulo.id_autor)
+                arrayArtRevista[contador] = _articulos_revista[contador];
+                contador++;
+
         }
         arrayArtRevista.sort(function (a, b) {
             return (b.num_menciones - a.num_menciones)
         })//Calculo del Inidice H
-        if (arrayArtRevista.length > 1)
+        if (_articulos_revista.length > 1)
             console.log("Articulos Revista Indice H: " + arrayArtRevista[arrayArtRevista.length - 2].num_menciones + "\n");
     }
 }
