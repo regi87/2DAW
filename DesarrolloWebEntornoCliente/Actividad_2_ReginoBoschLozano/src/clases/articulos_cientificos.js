@@ -1,11 +1,11 @@
 class articulos_cientificos {
 
-    constructor() {
+    constructor(_title, _num_paginas, _anyo_publi, _num_menciones) {
 
-    this.title = "";
-    this.num_paginas= 0;
-    this.anyo_publi = 0;
-    this.num_menciones = 0;
+    this.title = _title;
+    this.num_paginas= _num_paginas;
+    this.anyo_publi = _anyo_publi;
+    this.num_menciones = _num_menciones;
      
     }
 

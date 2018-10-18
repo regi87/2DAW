@@ -4,6 +4,7 @@ class autor {
         this.nombre = _nombre;
         this.apellidos = _apellidos;
         this.id = _id;
+
     }
 
     //introduce el nombre
@@ -12,7 +13,7 @@ class autor {
     }
     //devuelve el nombre
 
-    getNombre() {
+    getNombre() {       
         return this.nombre;
     }
     //introduce los apellidos
@@ -25,6 +26,7 @@ class autor {
     getApellidos() {
         return this.apellidos;
     }
+  
     //devuelve id
     getId() {
         return this.id;

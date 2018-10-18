@@ -27,10 +27,7 @@ class articulos_conferencia extends articulos_cientificos {
     getFactImp() {
         return this.factor_impacto;
     }
-    getArticulo ()
-    {
-        return { "title": this.title, "num_paginas":  this.num_paginas, "anyo_publi": this.anyo_publi, "num_menciones": this.num_menciones, "editorial":  this.editorial, "factor_impacto":  this.factor_impacto, "id_autor":  this._idAutor };
-    }
+ 
     //función modificar articulo por indice
     modificarArticulo(i, _articulo) {
         this.title = _articulo.title;

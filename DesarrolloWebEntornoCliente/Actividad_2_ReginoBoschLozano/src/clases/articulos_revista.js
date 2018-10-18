@@ -29,12 +29,6 @@ class articulos_revista extends articulos_cientificos {
    {
        return this.celebracion;
    }
-
-   getArticulo()
-   {
-    return { "title": this.title, "num_paginas": this.num_paginas, "anyo_publi": this.anyo_publi, "num_menciones": this.num_menciones, "nombre_conf": this.nombre_conf, "celebracion": this.celebracion, "id_autor": this.id_autor };
-
-   }
     //modificar articulo que queremos
     modificarArticulo( _articulo) {
         this.title = _articulo.title;
