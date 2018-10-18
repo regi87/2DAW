@@ -525,13 +525,13 @@ function buscarAutor() {
     let autores = listados.getAutores();
     let pregunta = rl.question("Introduce el autor a buscar :");
 
-    if (autores.length >0)
+    if (autores.length > 0)
         for (let autor of autores) {
             if (pregunta === autor.nombre) {
                 console.log("Nombre : " + autor.nombre);
                 console.log("Apellidos : " + autor.apellidos + "\n");
             }
-            
+
         }
     else {
         console.log("No hay resultados\n");
@@ -637,7 +637,7 @@ function buscarAutorAnyioPubliTipo() {
                 _autor[0] = { "id": autor.id, "nombre": autor.nombre };
                 console.log("\n Autor : " + autor.nombre);
             }
-            
+
         }
     }
     else {
@@ -666,7 +666,7 @@ function buscarAutorAnyioPubliTipo() {
                 if (_autor[0].id === articulo.id_autor && pregunta_3 === articulo.anyo_publi) {
                     console.log("Articulo Revista: " + articulo.title);
                 }
-               
+
             }
         }
         else {
@@ -677,7 +677,7 @@ function buscarAutorAnyioPubliTipo() {
                 if (_autor[0].id === articulo.id_autor && pregunta_3 === articulo.anyo_publi) {
                     console.log("Articulo Conferencia: " + articulo.title + "\n");
                 }
-              
+
             }
         else {
             console.log("No hay artículos de conferencia\n");
@@ -764,39 +764,33 @@ function indiceH() {
         if (autor.nombre === nombrePreg)
             id_autor = autor.id;
     }
-    if (_articulos_conferencia.length > 0) {
+    if (_articulos_conferencia.length > 0) {       
         for (let articulo of _articulos_conferencia) {
             if (id_autor === articulo._idAutor)
                 arrayArtConferencia[contador] = _articulos_conferencia[contador];
             contador++;
-
         }
         arrayArtConferencia.sort(function (a, b) {
             return (b.num_menciones - a.num_menciones)
-        })//Calculo del Inidice H
-        let menciones = 0;
-        for (let articulo of arrayArtConferencia) {
-            if (contador === articulo.num_menciones)
-                menciones = articulo.num_menciones;
-        }
-        if (menciones === 0) {
-            let operacion = [];
-            let indice = 0;
-            for (let articulo of arrayArtConferencia) {
-                operacion[indice] = articulo.num_menciones - contador;
-                indice++;
+        })        
+        let isArticle = false;
+        //Calculo del Inidice H
+        //indice-h artículos de conferencia
+        for (let i = 0; i < arrayArtConferencia.length; i++) {            
+            if (i > arrayArtConferencia[i].num_menciones) {
+                console.log('El Indice-H de los artículos de Conferencia es: '  + (i - 1)+"\n");
+                isArticle = true;
             }
-            menciones = Math.min(0, operacion);
         }
+        if(isArticle === false)
+            console.log("No tiene Indice-H de artículos de Conferencia"+"\n");
 
-        if (arrayArtConferencia.length > 1)
-            console.log("Articulo Conferencia Indice H: " + arrayArtConferencia[arrayArtConferencia.length - 1].num_menciones + "\n");
-        else
-            console.log("Sin información\n");
+
     }
 
     contador = 0;
     if (_articulos_revista.length > 0) {
+         isArticle = false;
         for (let articulo of _articulos_revista) {
             if (id_autor === articulo._idAutor)
                 arrayArtRevista[contador] = _articulos_revista[contador];
@@ -805,11 +799,17 @@ function indiceH() {
         }
         arrayArtRevista.sort(function (a, b) {
             return (b.num_menciones - a.num_menciones)
-        })//Calculo del Inidice H
-        if (arrayArtRevista.length > 1)
-            console.log("Articulos Revista Indice H: " + arrayArtRevista[arrayArtRevista.length - 1].num_menciones + "\n");
-        else
-            console.log("Sin información\n");
+        })
+        //Calculo del Inidice H
+        //indice-h artículos de Revista
+        for (let i = 0; i < arrayArtRevista.length; i++) {
+            if (i > arrayArtRevista[i].num_menciones) {
+                console.log('El Indice-H de los artículos de Revista es: '  + (i - 1)+"\n");
+                isArticle = true;
+            }
+        }
+        if(isArticle === false)
+        console.log("No tiene Indice-H de artículos de Revista"+"\n");
     }
 
 }
