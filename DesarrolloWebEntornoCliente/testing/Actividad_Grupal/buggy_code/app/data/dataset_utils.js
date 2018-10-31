@@ -79,6 +79,7 @@ var constants = {
  * @returns {Boolean} true in case that the set contains a forwarder position
  */
 function isForward(preferredPositions){
+    
     if(preferredPositions.has(constants.center_forward) || 
     preferredPositions.has(constants.left_forward) || 
     preferredPositions.has(constants.right_forward) ||
@@ -88,6 +89,9 @@ function isForward(preferredPositions){
         return true;
     }
     return false;
+
+
+
     
 }
 

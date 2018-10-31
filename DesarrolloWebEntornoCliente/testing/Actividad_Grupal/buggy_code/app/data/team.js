@@ -43,8 +43,14 @@ class Team {
      * @returns {Boolean} true in case that the player is in the team, false otherwise
      */
     hasPlayer(player){
+        
         for(let playerInTeam of this.listPlayers){
+            console.log("AQUI");
+            
+            console.log(playerInTeam);
+
             if(playerInTeam.equals(player)){
+
                 return true;
             }
         }

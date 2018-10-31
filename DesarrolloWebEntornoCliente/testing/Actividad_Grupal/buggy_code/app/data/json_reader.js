@@ -13,7 +13,6 @@ function extractDataFromRawJSON(jsonObject){
     for(let player of jsonObject){
         let id = player[jsonConstants.player_id];
         let playerObj = Player.fromDatasetJSONObject(id,player);
-        
         playerData.push(playerObj);
     }
     return playerData;
@@ -29,6 +28,7 @@ function readJSONData(filename){
     let jsonObject = undefined;
     try{
         jsonObject = jsonReader(filename);
+
     } catch(error){
         if(error instanceof SyntaxError){
             throw new SyntaxError('JSON in incorrect format');
