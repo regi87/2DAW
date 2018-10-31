@@ -10,13 +10,10 @@ test('Constructor error', () => {
 //testing player fromDatasetJSONObject method
 test('Testing player fromDatasetJSONObject method', () => {
    // let pl = new Player(0);
-   let jsonObjects = readJSONData('./data/sample.json');
-   let arrayPlayers = extractDataFromRawJSON(jsonObjects[0]);
-    
-    
-    expect(Player.fromDatasetJSONObject(0,arrayPlayers)).toBe(Player);
+   let jsonObjects = readJSONData('./data/sample.json'); 
+    let player = Player.fromDatasetJSONObject(0,jsonObjects[0]);
+    ex
 });
-
 
 //testing player isGoalKeeper method
 test('Testing player fromDatasetJSONObject method', () => {
@@ -77,7 +74,6 @@ test('Testing player fromDatasetJSONObject method', () => {
 test('Testing player fromDatasetJSONObject method', () => {
     let jsonObjects = readJSONData('./data/sample.json');
     let arrayPlayers = extractDataFromRawJSON(jsonObjects);  
-    console.log(arrayPlayers);
     expect(arrayPlayers[0].getName()).toBe("Cristiano Ronaldo");
 });
 
@@ -85,7 +81,6 @@ test('Testing player fromDatasetJSONObject method', () => {
 test('Testing player fromDatasetJSONObject method', () => {
     let jsonObjects = readJSONData('./data/sample.json');
     let arrayPlayers = extractDataFromRawJSON(jsonObjects);  
-    console.log(arrayPlayers);
     expect(arrayPlayers[0].getID()).toBe(20801);
 });
 
@@ -93,7 +88,6 @@ test('Testing player fromDatasetJSONObject method', () => {
 test('Testing player fromDatasetJSONObject method', () => {
     let jsonObjects = readJSONData('./data/sample.json');
     let arrayPlayers = extractDataFromRawJSON(jsonObjects);  
-    console.log(arrayPlayers);
     expect(arrayPlayers[0].getQuality()).toBe(94);
 });
 

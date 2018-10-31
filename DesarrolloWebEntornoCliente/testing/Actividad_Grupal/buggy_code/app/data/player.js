@@ -23,7 +23,8 @@ class Player {
      * @param {Object} jsonObject The JSON object used to parse the data from
      * @returns {Player} A new Player object filled with the relevant information from the JSON object
      */
-    static fromDatasetJSONObject(playerId, jsonObject) {        
+    static fromDatasetJSONObject(playerId, jsonObject) {   
+                
         let player = new Player(playerId);
         player.id = jsonObject[constants.player_id];
         player.name = jsonObject[constants.name];
@@ -32,7 +33,7 @@ class Player {
         player.club = jsonObject[constants.club];
         player.overall = jsonObject[constants.overall_quality];        
         //Modificamos para que nos devuelva un entero
-        let arreglo = jsonObject[constants.market_value].slice("");
+        let arreglo = jsonObject[constants.market_value];
         let num = "";
         let type = "";
         for (let i = 0; i < arreglo.length; i++) {
