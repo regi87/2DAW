@@ -44,13 +44,8 @@ class Team {
      */
     hasPlayer(player){
         
-        for(let playerInTeam of this.listPlayers){
-            console.log("AQUI");
-            
-            console.log(playerInTeam);
-
+        for(let playerInTeam of this.listPlayers){           
             if(playerInTeam.equals(player)){
-
                 return true;
             }
         }

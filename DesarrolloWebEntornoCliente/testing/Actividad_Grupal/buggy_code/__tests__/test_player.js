@@ -12,7 +12,9 @@ test('Testing player fromDatasetJSONObject method', () => {
    // let pl = new Player(0);
    let jsonObjects = readJSONData('./data/sample.json'); 
     let player = Player.fromDatasetJSONObject(0,jsonObjects[0]);
-    ex
+    expect(player.getName()).toBe("Cristiano Ronaldo");
+    expect(player.getAge()).toBe(32);
+    expect(player.getNationality()).toBe("Portugal");    
 });
 
 //testing player isGoalKeeper method
@@ -50,12 +52,6 @@ test('Testing player fromDatasetJSONObject method', () => {
     expect(arrayPlayers[0].getValue()).toBe(95500000);
 });
 
-//testing player getNationality method
-test('Testing player fromDatasetJSONObject method', () => {
-    let jsonObjects = readJSONData('./data/sample.json');
-    let arrayPlayers = extractDataFromRawJSON(jsonObjects);           
-    expect(arrayPlayers[0].getNationality()).toBe("Portugal");
-});
 
 //testing player getTeam method
 test('Testing player fromDatasetJSONObject method', () => {
@@ -64,12 +60,7 @@ test('Testing player fromDatasetJSONObject method', () => {
     expect(arrayPlayers[0].getTeam()).toBe("Real Madrid CF");
 });
 
-//testing player getAge method
-test('Testing player fromDatasetJSONObject method', () => {
-    let jsonObjects = readJSONData('./data/sample.json');
-    let arrayPlayers = extractDataFromRawJSON(jsonObjects);               
-    expect(arrayPlayers[0].getAge()).toBe(32);
-});
+
 //testing player getName method
 test('Testing player fromDatasetJSONObject method', () => {
     let jsonObjects = readJSONData('./data/sample.json');
