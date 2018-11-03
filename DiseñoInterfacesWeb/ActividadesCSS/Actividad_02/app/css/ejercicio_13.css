@@ -1,0 +1,76 @@
+/* Color id titulo*/
+#titulo{
+    color:teal;
+}
+/* Color id Subtitulo*/
+
+#subtitulo{
+    color: blue;
+}
+/* Color etiqueta strong*/
+strong{
+    color:red;
+}
+/* Color etiqueta span con la clase destacado*/
+span.destacado{
+    color:orange;
+}
+/* Color etiqueta a */
+a{
+    color: red;
+}
+/* Color etiqueta em */
+em{
+    color: blue;
+}
+/* Color etiqueta span con la clase especial */
+span.especial{
+    color:purple;
+}
+/* Formato de la tabla */
+table, td, th {
+    border-collapse: collapse;
+    border: 1px solid black;
+    padding: 10px;
+}
+/* Formato de la etiqueta caption */
+caption{
+    color:blue;
+}
+/* Formato de la etiqueta th para el scope:col y scope row con la clase especial*/
+th[scope=col],th[scope=row].especial,th[scope=col].especial{
+    color: orange;
+}
+/* Formato de la etiqueta td */
+td{
+    color: green;
+}
+/* Formato de la etiqueta td */
+em{
+    color:blue;
+    font-style: italic;
+}
+/* Formato de la etiqueta th para scope row */
+th[scope=row],th[scope=col]{
+    color: red;
+}
+/* Formato de la etiqueta strong */
+strong{
+    color: orange;
+}
+/* Color para la etiqueta con id=adicional */
+#adicional{
+    color:olive;
+}
+/* Color etiqueta span con id=especial */
+span#especial{
+    color: purple;
+
+}
+/* Color etiqueta a */
+#adicional a{
+    color: green;
+}
+p{
+    text-align: left;
+}

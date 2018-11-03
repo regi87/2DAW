@@ -1,0 +1,31 @@
+/* para todas las etiquetas con la clase intro*/
+.intro{
+    font-style: italic;
+    font-weight: bold;
+
+}
+/* estilo para las etiquetas dentro de la clase content que tengan la clase intro*/
+.content > *.intro{
+    font-style: italic;
+    font-weight: normal;
+
+}
+
+/* estilo para las etiquetas dentro de la etiqueta h2 que tengan la clase intro*/
+h2 + .intro{
+    font-style: italic;
+    font-weight: normal;
+}
+/* Todos los inputs con color de fondo verde */
+input{
+    background-color: green;
+}
+/* Los inputs con el atributo name el borde discontinuo*/
+/* #submit-name, #submit-email,#submit-recipe-name{
+    border-style: dotted;
+}*/
+
+/* Solo la caja de texto con borde discontinuo */
+ textarea{
+    border-style: dotted;
+}
