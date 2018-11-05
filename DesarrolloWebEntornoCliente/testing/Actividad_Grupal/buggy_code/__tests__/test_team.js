@@ -43,8 +43,25 @@ test('Test to add a collection players', () => {
     //console.log(players);
     //get number players in the team
     expect(team.getNumberPlayers()).toBe(3);
+    
     /** POSIBLE BUGGGGGGGGGGGG NO HACE OPERACIÓN EN LA CLASE SÓLO DEVUELVE UN 0**/
     //get verall quality
-    expect(team.getTeamOverallQuality()).toBe(0);
-
+    expect(team.getTeamOverallQuality()).toBe(93);
 });
+
+
+    /** POSIBLE BUGGGGGGGGGGGG NOS DEVUELVE SIEMPRE UNDEFINED**/
+    //get random valid tactic for a team return string
+test('Test get random valid tactic for a team return string', () => {
+    let tactic =Team.getRandomTeamTactic();
+    console.log("Tactica :"+tactic);
+});
+
+    /** POSIBLE BUGGGGGGGGGGGG anque le pasemos el string como pide nos salta el error de NaN**/
+    /** POSIBLE BUGGGGGGGGGGGG al poder pasarle por ejemplo esta alineación 4-4-20**/
+//Static method that gets a tactic and parses it to extract the number of defenders, midfielders, and attackers
+test('Test gets a tactic and parses it to extract the number of defenders, midfielders, and attackers', () => {
+       let arrayReturn= Team._parseTactic('4-4-2');
+       console.log("Defense: "+arrayReturn[0]+" midfielders:"+arrayReturn[1]+" Attackers: "+arrayReturn[2]);
+    });
+    
