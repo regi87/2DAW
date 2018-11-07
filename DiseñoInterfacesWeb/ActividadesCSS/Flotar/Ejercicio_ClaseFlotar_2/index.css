@@ -1,0 +1,37 @@
+#contenedor{
+    width: 100%;
+    background-color: gray;
+}
+
+#cabecera{
+    background-color: red;
+    width: 98%;
+    border: 10px solid black;
+    margin: 10px;
+
+}
+#menu{
+    float: left;
+    background-color: green;
+    height: 100px;
+    width: 20px;
+    margin: 10px;
+    border: 10px solid black;
+
+}
+#contenido{
+    background-color: blue;
+    float: left;
+    height: 400px;
+    width: 500px;
+    margin: 10px;
+    border: 10px solid black;
+
+}
+#pie{
+    background-color: yellow;
+    width: 98%;
+    clear: both;
+    margin: 10px;
+    border: 10px solid black;
+}

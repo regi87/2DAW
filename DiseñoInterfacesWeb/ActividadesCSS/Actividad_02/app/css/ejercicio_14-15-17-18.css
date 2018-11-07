@@ -27,5 +27,9 @@ input{
 
 /* Solo la caja de texto con borde discontinuo */
  textarea{
-    border-style: dotted;
+    border-style: dashed;
 }
+/* Selector de atributos*/
+input[name*=recipe] {
+    border-style: dashed;
+  }

@@ -1,0 +1,19 @@
+body {font-weight: bold; color:white;}
+#contenido {
+    /* Ancho de 700px y centrado en el navegador */
+    width: 700px; margin: auto; height: 300px;
+    /* Borde sólido y fondo gris claro */
+    border: solid 1px black; background-color: #CCCCCC;}
+
+#caja1{
+    width: 100px; height: 100px; background-color:#FF0000;
+    border: solid 1px black; margin: 10px; float: left }
+#caja2{
+    width: 130px; height: 130px; background-color:#00FF00;
+    border: solid 1px black; margin: 10px; float: left }
+#caja3{
+    width: 160px; height: 160px; background-color:#0000FF;
+    border: solid 1px black; margin: 10px; float: left }
+
+/* limpiar flotados a izquierda y derecha
+.clearboth{clear: both;}*/
