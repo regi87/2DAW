@@ -1,0 +1,23 @@
+
+div{
+    float: left;
+}
+h2{
+    color:#fada13;
+    text-shadow: -1px 0 #06070c, 0 1px #06070c, 1px 0 #06070c, 0 -1px #06070c;
+}
+h1,label{
+    color:#06070c;
+    text-shadow: -1px 0 #fada13, 0 1px #06070c, 1px 0 #06070c, 0 -1px #06070c;
+}
+li {
+    text-shadow: -1px 0 #06070c, 0 1px #06070c, 1px 0 #06070c, 0 -1px #06070c;
+    color:#fada13;
+}
+
+/* 
+Los colores utilizads son para el amarillo #fada13 y para el negro #06070c,
+    estos dos colores los he sacado de una imagen de internet del escudo de batman
+
+*/
+

@@ -102,7 +102,7 @@ class Team {
      */
     static getRandomTeamTactic() {
         let availableTactics = ['3-4-3', '3-5-2', '3-6-1', '4-3-3', '4-4-2', '4-5-1', '5-3-2'];
-        let randomIndex = Math.floor(Math.random() * availableTactics.length);
+        let randomIndex = Math.floor(Math.random() * (availableTactics.length-1));
         return availableTactics[randomIndex];
     }
 
@@ -121,21 +121,28 @@ class Team {
             throw Error('Tactics may only take 3 positions and got ' + playersPerPosition + ' with ' +
                 playersPerPosition.length + ' elements');
         }
+        
+         if (playersPerPosition.length !== 3) {
+            throw Error('Tactic has more than 10 players ' + playersPerPosition + ' with ' +
+                playersPerPosition.length + ' elements');
+        }
         //Parse tactic elements to numbers
         playersPerPosition = playersPerPosition.map(elem => parseInt(elem));
+        let sum=0;
         //If any of the elements is not an integer, then raise error
-
         for (let element of playersPerPosition) {
             if (isNaN(element)) {
                 throw Error('One of the specified positions is not a number');
             }
+             sum += element;
         }
-
-
+        //If the total of players is > 10
+        if (sum !== 10) {
+            throw Error('The tactic do not have to have more than 10 players');
+        }
         /*if (playersPerPosition.filter(n => isNaN(n)) === false) {
             throw Error('One of the specified positions is not a number');
         }*/
-
         return playersPerPosition;
     }
 
@@ -171,7 +178,6 @@ class Team {
      * @throws {Error} In case that the tactic specifies less or more than 11 players, or if an invalid tactic is provided (<3 defenders, <3 midfielders, <1 attacker) 
      */
     static createRandomTeam(listPossiblePlayers, tactic, teamName, teamValue) {
-
         let playersPerPosition = Team._parseTactic(tactic);
         let numberBackers = parseInt(playersPerPosition[0]);
         let numberMidfielders = parseInt(playersPerPosition[1]);

@@ -1,0 +1,14 @@
+div{
+    top: 50px;
+    left: 50px;
+}
+#div_dif{
+    position: absolute;
+}
+p{
+    float: left;
+    margin-left: 50px;
+    margin-top: 50px;
+    width: 400px;
+   
+}

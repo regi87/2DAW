@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">44.44% </span>
+        <span class="strong">60.26% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>32/72</span>
+        <span class='fraction'>47/78</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">27.78% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>5/18</span>
+        <span class='fraction'>11/22</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">65% </span>
+        <span class="strong">70% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>13/20</span>
+        <span class='fraction'>14/20</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">44.29% </span>
+        <span class="strong">60.53% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>31/70</span>
+        <span class='fraction'>46/76</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -268,7 +268,13 @@
 223
 224
 225
-226</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+226
+227
+228
+229
+230
+231
+232</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -385,23 +391,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -417,19 +430,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -597,7 +609,7 @@ class Team {
      */
     static getRandomTeamTactic() {
         let availableTactics = ['3-4-3', '3-5-2', '3-6-1', '4-3-3', '4-4-2', '4-5-1', '5-3-2'];
-        let randomIndex = Math.floor(Math.random() * availableTactics.length);
+        let randomIndex = Math.floor(Math.random() * (availableTactics.length-1));
         return availableTactics[randomIndex];
     }
 &nbsp;
@@ -616,21 +628,28 @@ class Team {
 <span class="cstat-no" title="statement not covered" >            throw Error('Tactics may only take 3 positions and got ' + playersPerPosition + ' with ' +</span>
                 playersPerPosition.length + ' elements');
         }
+        
+         <span class="missing-if-branch" title="if path not taken" >I</span>if (playersPerPosition.length !== 3) {
+<span class="cstat-no" title="statement not covered" >            throw Error('Tactic has more than 10 players ' + playersPerPosition + ' with ' +</span>
+                playersPerPosition.length + ' elements');
+        }
         //Parse tactic elements to numbers
         playersPerPosition = playersPerPosition.map(elem =&gt; parseInt(elem));
+        let sum=0;
         //If any of the elements is not an integer, then raise error
-&nbsp;
         for (let element of playersPerPosition) {
-            <span class="missing-if-branch" title="if path not taken" >I</span>if (isNaN(element)) {
-<span class="cstat-no" title="statement not covered" >                throw Error('One of the specified positions is not a number');</span>
+            if (isNaN(element)) {
+                throw Error('One of the specified positions is not a number');
             }
+             sum += element;
         }
-&nbsp;
-&nbsp;
+        //If the total of players is &gt; 10
+        if (sum !== 10) {
+            throw Error('The tactic do not have to have more than 10 players');
+        }
         /*if (playersPerPosition.filter(n =&gt; isNaN(n)) === false) {
             throw Error('One of the specified positions is not a number');
         }*/
-&nbsp;
         return playersPerPosition;
     }
 &nbsp;
@@ -641,19 +660,19 @@ class Team {
      * @returns {Array&lt;Player&gt;} The group of players selected
      * @throws Error in case that there are not enough players to choose randomly
      */
-<span class="fstat-no" title="function not covered" >    st</span>atic _getRandomPlayers(listPlayers, numberPlayers) {
-<span class="cstat-no" title="statement not covered" >        if (listPlayers.length &lt; numberPlayers) {</span>
-<span class="cstat-no" title="statement not covered" >            throw Error('Insufficient players to make a team');</span>
+    static _getRandomPlayers(listPlayers, numberPlayers) {
+        if (listPlayers.length &lt; numberPlayers) {
+            throw Error('Insufficient players to make a team');
         }
-        let selectedPlayers = <span class="cstat-no" title="statement not covered" >new Array();</span> //Array used to put chosen players
-        let copyListPlayers = <span class="cstat-no" title="statement not covered" >listPlayers.slice();</span> //Array that copies the original pool of players. Used to dynamically remove players
+        let selectedPlayers = new Array(); //Array used to put chosen players
+        let copyListPlayers = listPlayers.slice(); //Array that copies the original pool of players. Used to dynamically remove players
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        for (let playersAdded = 0; playersAdded &lt; numberPlayers; playersAdded++) { //For each random player to select</span>
-            let indexPlayer = <span class="cstat-no" title="statement not covered" >Math.floor(Math.random() * copyListPlayers.length);</span> //Index of the random player to be chosen
-            let player = <span class="cstat-no" title="statement not covered" >copyListPlayers[indexPlayer];</span>
-<span class="cstat-no" title="statement not covered" >            selectedPlayers.push(player);</span>
+        for (let playersAdded = 0; playersAdded &lt; numberPlayers; playersAdded++) { //For each random player to select
+            let indexPlayer = Math.floor(Math.random() * copyListPlayers.length); //Index of the random player to be chosen
+            let player = copyListPlayers[indexPlayer];
+            selectedPlayers.push(player);
         }
-<span class="cstat-no" title="statement not covered" >        return selectedPlayers;</span>
+        return selectedPlayers;
     }
 &nbsp;
     /**
@@ -666,7 +685,6 @@ class Team {
      * @throws {Error} In case that the tactic specifies less or more than 11 players, or if an invalid tactic is provided (&lt;3 defenders, &lt;3 midfielders, &lt;1 attacker) 
      */
 <span class="fstat-no" title="function not covered" >    st</span>atic createRandomTeam(listPossiblePlayers, tactic, teamName, teamValue) {
-&nbsp;
         let playersPerPosition = <span class="cstat-no" title="statement not covered" >Team._parseTactic(tactic);</span>
         let numberBackers = <span class="cstat-no" title="statement not covered" >parseInt(playersPerPosition[0]);</span>
         let numberMidfielders = <span class="cstat-no" title="statement not covered" >parseInt(playersPerPosition[1]);</span>
@@ -724,7 +742,7 @@ exports.Team = Team;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 05 2018 16:50:29 GMT+0100 (CET)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 07 2018 16:38:55 GMT+0100 (CET)
 </div>
 </div>
 <script src="prettify.js"></script>

@@ -1,0 +1,10 @@
+#div_2{
+    position: absolute;
+}
+p{
+    float: left;
+    width: 400px;
+}
+div{
+    margin: 10px;
+}

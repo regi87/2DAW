@@ -1,0 +1,8 @@
+div{
+    float: left;
+    margin: 1em 0 1em 1em;
+}
+#div_dif{
+    position: relative;
+    top: 10em;
+}
