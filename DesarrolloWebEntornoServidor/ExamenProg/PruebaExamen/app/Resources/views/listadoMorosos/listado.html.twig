@@ -1,0 +1,10 @@
+       {% block body %}
+    {% for tabla_ejemplo in  array_tabla_entidad %}
+        <li><label>{{tabla_ejemplo.id}} -></label><b> Nombre:</b> {{ tabla_ejemplo.nombre }}
+         <b> Apellidos:</b>  {{tabla_ejemplo.apellidos}} 
+         <b> Edad:</b>  {{tabla_ejemplo.edad}} 
+        <b> Telefono:</b> {{tabla_ejemplo.telefono}} <b> 
+        Dinero:</b> {{tabla_ejemplo.dinero}} 
+        </li>
+    {% endfor %}
+{% endblock %}

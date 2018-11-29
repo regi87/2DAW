@@ -1,0 +1,105 @@
+﻿body {
+  color: #888;
+  font: normal 16px/32px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Ejercicio 1*/
+.cabecera, .pie{
+float: right;
+}
+/* Ejercicio 2*/
+.pie>a, .cabecera>a{
+  color: #801515;
+  margin: 20px;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+/* Ejercicio 3*/
+/* unvisited link */
+.pie>a:link, .cabecera>a:link{
+  color: #801515;
+}
+
+/* visited link */
+.pie>a:visited, .cabecera>a:visited{
+  color: #801515;
+}
+
+/* mouse over link */
+.pie>a:hover, .cabecera>a:hover{
+  color: #801515;
+  background-color: #336699;
+}
+
+/* selected link */
+.pie>a:active, .cabecera>a:active{
+  color: #801515;
+}
+
+/* Ejercicio 4*/
+h1>a{
+  color: #550000;
+  text-transform: uppercase;
+}
+
+/*Ejercicio 5*/
+.home{ 
+  float: left;
+  color:#550000;
+  border-top: 4px solid;
+  margin: 0px;
+  margin-bottom: 30px;
+}
+
+/* Ejercicio 6*/
+.descripcion>*{
+  clear: both;
+}
+/* Ejercicio 7*/
+.descripcion > h1{
+  text-transform: uppercase;
+  text-align: center;
+  color: #801515;
+  margin-top: 70px;
+}
+
+/*Ejercicio 8*/
+h2, h3,h5{
+  text-align: center;
+  margin: 30px;
+  color: #550000;
+}
+
+/* Ejercicio 9*/
+.contenido{
+  float: left;
+  width: 33%;
+  margin-bottom: 80px;
+}
+
+/*Ejercicio 10*/
+p{
+  margin-right: 20px;
+  margin-left: 20px;
+  text-align: justify;
+}
+
+/*Ejercicio 11*/
+.contenido > a{
+  float: right;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+/* Ejercicio 12*/
+small{
+  clear: left;
+}
+
+/* Ejercicio 13*/
+section > a{
+  color: #550000;
+  text-decoration: underline;
+}
