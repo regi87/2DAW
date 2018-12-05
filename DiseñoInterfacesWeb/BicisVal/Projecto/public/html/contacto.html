@@ -1,70 +1,79 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>ValenBici</title>
-
+<title>ValenBici</title>
+<link rel="stylesheet" type="text/css" href="./../css/css.css" media="screen" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous">
 </head>
 
 <body>
     <header>
         <!--Logo Tipo de la Empresa en el menu de navegación-->
-            <img src="./../imagenes/logo/LOGO.png" height="50px" width="70px"/>
+        <img class="logo" src="./../imagenes/logo/LOGO_1.png" height="60px" width="120px" />
         <!--Menu de Navegación-->
-        <ul>
-            <li><a href="../../index.html">Inicio</a></li>
-            <li><a href="./taller.html">Taller</a></li>
-            <li><a href="./venta.html">Venta</a></li>
-            <li><a href="./alquiler.html">Alquiler</a></li>
-            <li><a href="./contacto.html">Contacto</a></li>
-            <li><a href="./carrito.html">Carrito</a></li>
-        </ul>
+
+        <nav>
+            <a href="#"><img height="25" width="35" src="./../imagenes/idiomas/castellano.png"></a>
+            <a href="#"><img height="25" width="35" src="./../imagenes/idiomas/valenciano.png"></a>
+            <div id="textNav">
+                <a href="carrito.html">Carrito</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="taller.html">Taller</a>
+                <a href="alquiler.html">Alquiler</a>
+                <a href="venta.html">Venta</a>
+                <a href="../../index.html">Inicio</a>
+            </div>
+        </nav>
     </header>
-        <!--Imagenes Slider -->
-    <nav>
-        <img src="./../imagenes/slider/Slider_1.jpg" height="300" width="600">
-    </nav>
-            <!--Formulario -->
+
+    <!--Formulario -->
     <section>
-            <form action="/action_page.php">
-                Nombre:<br>
-                <input type="text" name="firstname" value="Mickey">
-                <br>
-               Apellidos:<br>
-                <input type="text" name="lastname" value="Mouse">
-                <br>
-                Correo:<br>
-                <input type="text" name="lastname" value="Mouse">
-                <br>
-                Teléfono:<br>
-                <input type="text" name="lastname" value="Mouse">
-                <br>
-                Descripción:<br>
-                <textarea rows="4" cols="50">
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d457.7608525220193!2d-0.35842780088571213!3d39.4820757218379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1540143074903"
+            width="500" height="500" frameborder="2" style="border:2" allowfullscreen></iframe> 
+
+        <div class="form">
+        <form action="/action_page.php">
+            Nombre:<br>
+            <input type="text" name="firstname" value="Mickey">
+            <br>
+            Apellidos:<br>
+            <input type="text" name="lastname" value="Mouse">
+            <br>
+            Correo:<br>
+            <input type="text" name="lastname" value="Mouse">
+            <br>
+            Teléfono:<br>
+            <input type="text" name="lastname" value="Mouse">
+            <br>
+            Descripción:<br>
+            <textarea rows="4" cols="50">
                         At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
                 </textarea>
-                <br><br>
-                <input type="submit" value="Submit">
-              </form> 
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+        <div class="cleans"></div>
+
     </section>
-        <!--Zona Lateal de la Web-->
-    <aside>
-        <h4>ASHIDE</h4>
-    </aside>
-                <!--Footer de la página-->
-                <footer>
-                        <!--Dirección Información-->
-                        <p> 
-                            c/Dirección de la calle, Numº
-                            Población
-                            Provincia
-                            Teléfono
-                        </p>
-                        <!--Croques ubicación-->
-                        <div id="map">My map will go here</div>
-                        <!--Iconos Redes Sociales-->
-                        <i class="fa fa-cloud"></i>
-                    </footer>
+
+    <!--Footer de la página-->
+    <footer>
+        <!--Dirección Información-->
+        <p id="textFooter">
+            <label> e-mail: algo@gmail.com</label><br>
+            <label> Telf: 605929593</label>
+        </p>
+        <!--Iconos Redes Sociales-->
+        <div id="icons">
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-twitter-square"></i>
+            <i class="fab fa-linkedin"></i>
+        </div>
+
+    </footer>
 </body>
 
 </html>

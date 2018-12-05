@@ -3,87 +3,106 @@
 
 <head>
     <title>ValenBici</title>
-
+    <link rel="stylesheet" type="text/css" href="./../css/css.css" media="screen" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
 </head>
 
 <body>
     <header>
         <!--Logo Tipo de la Empresa en el menu de navegación-->
-        <img src="./../imagenes/logo/LOGO.png" height="50px" width="70px" />
+        <img class="logo" src="./../imagenes/logo/LOGO_1.png" height="60px" width="120px" />
         <!--Menu de Navegación-->
-        <ul>
-            <li><a href="../../index.html">Inicio</a></li>
-            <li><a href="./taller.html">Taller</a></li>
-            <li><a href="./venta.html">Venta</a></li>
-            <li><a href="./alquiler.html">Alquiler</a></li>
-            <li><a href="./contacto.html">Contacto</a></li>
-            <li><a href="./carrito.html">Carrito</a></li>
-        </ul>
+
+        <nav>
+            <a href="#"><img height="25" width="35" src="./../imagenes/idiomas/castellano.png"></a>
+            <a href="#"><img height="25" width="35" src="./../imagenes/idiomas/valenciano.png"></a>
+            <div id="textNav">
+                <a href="carrito.html">Carrito</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="taller.html">Taller</a>
+                <a href="alquiler.html">Alquiler</a>
+                <a href="venta.html">Venta</a>
+                <a href="../../index.html">Inicio</a>
+            </div>
+        </nav>
     </header>
-    <!--Imagenes Slider-->
-    <nav>
-        <img src="./../imagenes/slider/Slider_1.jpg" height="300" width="600">
-    </nav>
+
     <!-- Contenido de la página: Modelos de bici para el alquiler  -->
     <section>
         <h2>Taller</h2>
-        <table style="width:100%" border="1px">
+        <table id="customers" style="width:100%">
             <tr>
                 <!-- Cada bici tendrá una imagen de ella, una breve descipción y un boton para abrir la 
                         descripción larga que se encuentra oculta -->
                 <td>
-                    <img src="./../imagenes/reparacion/herramienta_1.png" height="50" width="50">
+                        <img src="./../imagenes/reparacion/herramienta_1.png" height="50px" width="50px">
+                        <h3>Reparación</h3>
+                        <p id="corta">Descripción reparación </p>
                 </td>
                 <td>
-                    <img src="./../imagenes/reparacion/herramienta_2.png" height="50" width="50">
+                    <img src="./../imagenes/reparacion/herramienta_2.png" height="50px" width="50px">
+                    <h3>Reparación</h3>
+                    <p id="corta">Descripción reparación </p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <img src="./../imagenes/reparacion/herramienta_3.png" height="50" width="50">
+                    <img src="./../imagenes/reparacion/herramienta_3.png" height="50px" width="50px">
+                    <h3>Reparación</h3>
+                    <p id="corta">Descripción reparación </p>
                 </td>
                 <td>
-                    <img src="./../imagenes/reparacion/herramienta_4.png" height="50" width="50">
+                    <img src="./../imagenes/reparacion/herramienta_4.png" height="50px" width="50px">
+                    <h3>Reparación</h3>
+                    <p id="corta">Descripción reparación</p>
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    <img src="./../imagenes/reparacion/herramienta_5.png" height="50" width="50">
+                    <img src="./../imagenes/reparacion/herramienta_5.png" height="50px" width="50px">
+                    <h3>Reparación</h3>
+                    <p id="corta">Descripción reparación</p>
                 </td>
                 <td>
-                    <img src="./../imagenes/reparacion/herramienta_6.jpg" height="50" width="50">
+                    <img src="./../imagenes/reparacion/herramienta_6.jpg" height="50px" width="50px">
+                    <h3>Reparación</h3>
+                    <p id="corta">Descripción reparación </p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <img src="./../imagenes/reparacion/herramienta_7.png" height="50" width="50">
+                    <img src="./../imagenes/reparacion/herramienta_7.png" height="50px" width="50px">
+                    <h3>Reparación</h3>
+                    <p id="corta">Descripción reparación </p>
+
                 </td>
                 <td>
-                    <img src="./../imagenes/reparacion/herramienta_8.png" height="50" width="50">
+                    <img src="./../imagenes/reparacion/herramienta_8.png" height="50px" width="50px">
+                    <h3>Reparación</h3>
+                    <p id="corta">Descripción reparación</p>
                 </td>
             </tr>
 
         </table>
+        <div class="cleans"></div>
+
     </section>
-    <!--Zona Lateal de la Web-->
-    <aside>
-        <h4>ASHIDE</h4>
-    </aside>
     <!--Footer de la página-->
     <footer>
-            <!--Dirección Información-->
-            <p> 
-                c/Dirección de la calle, Numº
-                Población
-                Provincia
-                Teléfono
-            </p>
-            <!--Croques ubicación-->
-            <div id="map">My map will go here</div>
-            <!--Iconos Redes Sociales-->
-            <i class="fa fa-cloud"></i>
-        </footer>
+        <!--Dirección Información-->
+        <p id="textFooter">
+            <label> e-mail: algo@gmail.com</label><br>
+            <label> Telf: 605929593</label>
+        </p>
+        <!--Iconos Redes Sociales-->
+        <div id="icons">
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-twitter-square"></i>
+            <i class="fab fa-linkedin"></i>
+        </div>
+
 </body>
 
 </html>

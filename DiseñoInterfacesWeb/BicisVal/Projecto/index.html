@@ -5,56 +5,56 @@
     <title>ValenBici</title>
 
     <link rel="stylesheet" type="text/css" href="./public/css/css.css" media="screen" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 </head>
 
 <body>
     <header>
         <!--Logo Tipo de la Empresa en el menu de navegación-->
-        <img class="logo" src="./public/imagenes/logo/LOGO_1.png" height="60px" width="120px"/>
+        <img class="logo" src="./public/imagenes/logo/LOGO_1.png" height="60px" width="120px" />
         <!--Menu de Navegación-->
 
-        <li id="menu"><a href="#">Idioma
-
-        <ul>
-            <li><a href="#">Castellano</a></li>
-            <li><a href="#">Valencià</a></li>
-        </ul>
-    </li>
-        <a href="./public/html/carrito.html">Carrito</a>
-        <a href="./public/html/contacto.html">Contacto</a>
-            <a href="./public/html/taller.html">Taller</a>
-            <a href="./public/html/alquiler.html">Alquiler</a>
-            <a href="./public/html/venta.html">Venta</a>
-            <a href="index.html">Inicio</a>
-
+        <nav>
+            <a href="#"><img height="25" width="35" src="public/imagenes/idiomas/castellano.png"></a>
+            <a href="#"><img height="25" width="35" src="public/imagenes/idiomas/valenciano.png"></a>
+            <div id="textNav">
+                <a href="./public/html/carrito.html">Carrito</a>
+                <a href="./public/html/contacto.html">Contacto</a>
+                <a href="./public/html/taller.html">Taller</a>
+                <a href="./public/html/alquiler.html">Alquiler</a>
+                <a href="./public/html/venta.html">Venta</a>
+                <a href="index.html">Inicio</a>
+            </div>
+        </nav>
     </header>
-        <!--Imagenes Slider y Eslogan de la Empresa-->
-    <nav>
-            <img src="./public/imagenes/slider/Slider_1.jpg" height="300" width="600">
-            <h2>La bici es tu vida</h2>
-    </nav>
-            <!--Texto de Descripción -->
+    <!--Imagenes Slider y Eslogan de la Empresa-->
+    <div>
+        <img id="slider" src="./public/imagenes/slider/Slider_1_Texto.jpg">
+    </div>
+    <!--Texto de Descripción -->
     <section>
         <article>Esto es un texto sober la explicación de la página </article>
     </section>
-        <!--Zona Lateal de la Web-->
+    <!--Zona Lateal de la Web
     <aside>
         <h4>ASHIDE</h4>
-    </aside>
-                <!--Footer de la página-->
+    </aside>-->
+    <!--Footer de la página-->
     <footer>
-        <!--Dirección Información-->
-        <p> 
-            c/Dirección de la calle, Numº
-            Población
-            Provincia
-            Teléfono
-        </p>
-        <!--Croques ubicación-->
-        <div id="map">My map will go here</div>
-        <!--Iconos Redes Sociales-->
-        <i class="fa fa-cloud"></i>
+            <!--Dirección Información-->
+            <p id="textFooter">
+               <label> e-mail: algo@gmail.com</label><br>
+               <label> Telf: 605929593</label>
+            </p>
+            <!--Iconos Redes Sociales-->
+            <div id="icons">
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-twitter-square"></i>
+                    <i class="fab fa-linkedin"></i>
+            </div>
+          
     </footer>
 </body>
+
 </html>
