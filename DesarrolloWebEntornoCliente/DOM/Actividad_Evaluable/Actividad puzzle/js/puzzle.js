@@ -1,29 +1,38 @@
 //Declaración variables
 let numPiezas = 0;
-let puntuacion = 0;
+let puntuacion = 20;
 let relacionAspecto = 0;
-let totalPiezas = 0;
+let time = false;
+let JsonData = [{}];
 
 /**
  * Función Inicio Programa Pedimos un Número Válido al Usuario
  */
 function getNumberPiecesFromUser() {
-    var num = windows.prompt(
-        "Bienvenidos al juego de puzzle \n" +
-        " Introduce un número válido para empezar el juego");
 
-    if (num < 10) {
-        alert("Debe de introducir un número mayor que 10 y sea válido");
-        return false;
-    }
-    if (Math.sqrt(num) == parseInt(Math.sqrt(num))) {
-        alert("Número Correcto\n" +
-            "El número introducido es: " + num);
-        puznumPiezaszle = num;
-        return true;
-    } else {
-        alert("Debe de introducir un número válido");
-        return false;
+    let valid = false;
+    while (valid === false) {
+        console.log(Math.sqrt(numPiezas));
+
+        var num = window.prompt(
+            "Bienvenidos al juego de puzzle \n" +
+            " Introduce un número válido para empezar el juego");
+
+        if (num < 3) {
+            alert("Debe de introducir un número mayor que 3 y sea válido");
+            valid = false;
+        } else if (Math.sqrt(num) == parseInt(Math.sqrt(num))) {
+            alert("Número Correcto\n" +
+                "El número introducido es: " + num);
+            valid = true;
+
+            numPiezas = num;
+            initGame("./../cat.jpg", numPiezas);
+
+        } else {
+            alert("Debe de introducir un número válido");
+            valid = false;
+        }
     }
 }
 
@@ -42,7 +51,7 @@ function getScore() {
     return puntuacion;
 }
 
-/** @description Actualizamos la puntuación
+/** @description Actualizamos la puntuación sumando
  * @param {number} nuevaPuntuacion Recoge la nueva puntuación 
  */
 function updateScore(_nuevaPuntuacion) {
@@ -50,11 +59,20 @@ function updateScore(_nuevaPuntuacion) {
     document.getElementById("score").textContent = puntuacion;
 }
 
-/** @description Actualizamos la puntuación
- * @param {number} nuevaPuntuacion Le pasamos un número para restar a la puntuación
+/** @description Actualizamos la puntuación restando
+ * @param {number} _nuevaPuntuacion Le pasamos un número para restar a la puntuación
  */
 function decreaseScore(_nuevaPuntuacion) {
     document.getElementById("score").textContent = puntuacion - _nuevaPuntuacion;
+    puntuacion = puntuacion - _nuevaPuntuacion;
+}
+
+/** @description Actualizamos la puntuación sumando
+ * @param {number} _nuevaPuntuacion Le pasamos un número para sumar a la puntuación
+ */
+function increaseScore(_nuevaPuntuacion) {
+    document.getElementById("score").textContent = puntuacion + _nuevaPuntuacion;
+    puntuacion = puntuacion + _nuevaPuntuacion;
 }
 
 /** @description  Devuelve la anchura y altura
@@ -130,11 +148,8 @@ function createPuzzleLayout(totalPiezas, anchura, altura, direccion) {
     let raiz = Math.sqrt(totalPiezas);
     // Obtener la referencia del elemento body
     var body = document.getElementsByTagName("body")[0];
-
     // Crea un elemento <table> y un elemento <tbody>
     var tabla = document.createElement("table");
-
-
     var tblBody = document.createElement("tbody");
 
     // Crea las celdas
@@ -191,66 +206,203 @@ function pieceToOffset(numPieza, totalPiezas, anchura, altura) {
 
     desplazamiento.x = numPieza.y * anchuraPieza;
     desplazamiento.y = numPieza.x * alturaPieza;
-    
+
     return desplazamiento;
-    //document.getElementById(numPieza.x + "," + numPieza.y).style.backgroundPosition = "-"+desplazamiento.x + "px" + " " +"-"+desplazamiento.y + "px";
-    // }
+
 }
 
 /** @description  Devolverá un array con el desplazamiento (offset) 
  * @param {number} totalPiezas Le pasamos el total de piezas
  * @param {number} anchura Le pasamos la anchura del puzzle
  * @param {number} altura Le pasamos la altura del puzzle
- * @return {number} array con el desplazamiento (offset) 
+ * @return {array} array con el desplazamiento (offset) 
  **/
-function createReferenceSolution(totalPiezas, anchura, altura )
-{
-    let arrayPiezasPosc =[];
-    for (let j = 0; j < totalPiezas; j++) 
-    {
-        arrayPiezasPosc[j]= pieceNumberToRowsColumns(j, totalPiezas);
-        arrayPiezasPosc[j] =arrayPiezasPosc[j].split(",");
+function createReferenceSolution(totalPiezas, anchura, altura) {
+    let arrayPiezasPosc = [];
+    for (let j = 0; j < totalPiezas; j++) {
+        arrayPiezasPosc[j] = pieceNumberToRowsColumns(j, totalPiezas);
+        arrayPiezasPosc[j] = arrayPiezasPosc[j].split(",");
     }
-    
-    
-    for (let i = 0; i < totalPiezas; i++) 
-    {
-        arrayPiezasPosc[i] = pieceToOffset( {"x":arrayPiezasPosc[i][0], "y":arrayPiezasPosc[i][1]}, totalPiezas,anchura, altura);
+
+    for (let i = 0; i < totalPiezas; i++) {
+        arrayPiezasPosc[i] = pieceToOffset({
+            "x": arrayPiezasPosc[i][0],
+            "y": arrayPiezasPosc[i][1]
+        }, totalPiezas, anchura, altura);
     }
     return arrayPiezasPosc;
 }
 /** @description  Devolverá un array con el desplazamiento (offset) 
  * @param {array} arrayPosc Le pasamos el total de piezas
  **/
-function drawContentPuzzle(arrayPosc)
-{
-    let arrayPiezasPosc =[];
-    for (let j = 0; j < arrayPosc.length; j++) 
-    {
-        arrayPiezasPosc[j]= pieceNumberToRowsColumns(j, arrayPosc.length);
-        arrayPiezasPosc[j] =arrayPiezasPosc[j].split(",");
+function drawContentPuzzle(arrayPosc) {
+    let arrayPiezasPosc = [];
+    for (let j = 0; j < arrayPosc.length; j++) {
+        arrayPiezasPosc[j] = pieceNumberToRowsColumns(j, arrayPosc.length);
+        arrayPiezasPosc[j] = arrayPiezasPosc[j].split(",");
     }
-    for (let j = 0; j < arrayPosc.length; j++) 
-    {
-        document.getElementById(arrayPiezasPosc[j][0]+ "," +arrayPiezasPosc[j][1]).style.backgroundPosition = "-"+arrayPosc[j].x + "px" + " "+"-"+arrayPosc[j].y + "px";
-    }        
+    for (let j = 0; j < arrayPosc.length; j++) {
+        document.getElementById(arrayPiezasPosc[j][0] + "," + arrayPiezasPosc[j][1]).style.backgroundPosition = "-" + arrayPosc[j].x + "px" + " " + "-" + arrayPosc[j].y + "px";
+    }
 }
 //LÓGICA DEL JUEGO
+/** @description  Devolverá si el puzzle está terminado 
+ * @param {array} solucion Le pasamos la solución del puzzle
+ * @param {array} estado Le pasamos el estado del puzzle
+ * @returns {bool} acabado devoveremos si esta acabado o no
+ **/
+function checkIfSolution() {}
 
+/** @description  Carga la imagen
+ * @param {array} imageURL Url de la image
+ * @param {array} numberOfPieces Número de piezas
+ **/
+function initGame(imageURL, numberOfPieces) {
+    let img = new Image();
+    img.addEventListener("load", function () {
+        gameLogic(img, numberOfPieces);
+    });
+    img.src = imageURL;
+}
+
+/** @description  Función lógica del "juego"
+ * @param {array} imagen Url de la image
+ * @param {array} numberOfPieces Número de piezas
+ **/
+function gameLogic(imagen, numberOfPieces) {
+    let arrayPuzzleResuelto = [];
+    cuentaAtras(false);
+    updateScore(20);
+    createPuzzleLayout(numberOfPieces, imagen.width, imagen.height, "url(" + imagen.getAttribute("src") + ")");
+    let array = createReferenceSolution(numberOfPieces, imagen.width, imagen.height);
+    arrayPuzzleResuelto = createReferenceSolution(numberOfPieces, imagen.width, imagen.height);
+
+    shuffle(array);
+    drawContentPuzzle(array);
+
+    let table = document.getElementsByTagName("table");
+    let contador = 0;
+    let seleccion = "";
+    let w = 0;
+    let q = 0;
+
+
+    for (let j = 0; j < table[0].rows.length; j++)
+        for (let i = 0; i < table[0].rows.length; i++) {
+            if (q > 0)
+                q = table[0].rows.length * j + (i);
+            else
+                q = (j + i);
+
+            if (parseInt(arrayPuzzleResuelto[q].x) === Math.abs(parseInt(document.getElementById(j + "," + i).style.backgroundPositionX)) &&
+                parseInt(arrayPuzzleResuelto[q].y) === Math.abs(parseInt(document.getElementById(j + "," + i).style.backgroundPositionY))) {
+                document.getElementById(j + "," + i).style.borderColor = "green";
+            }
+
+            table[0].rows[j].cells[i].addEventListener("click", function (e) {
+
+                if (getScore() > 0 && time === false) {
+                    if (j > 0)
+                        w = table[0].rows.length * j + (i);
+                    else
+                        w = (j + i);
+
+                    if (contador === 0) {
+                        document.getElementById(e.target.id).style.borderColor = "red";
+                        seleccion = e.target.id;
+                        contador = 1;
+                    } else if (contador === 1 && seleccion === e.target.id) {
+                        document.getElementById(e.target.id).style.borderColor = "black";
+                        contador = 0;
+                    } else if (seleccion !== e.target.id) {
+                        let selec = e.target.style.backgroundPosition;
+                        e.target.style.backgroundPosition = document.getElementById(seleccion).style.backgroundPosition;
+                        document.getElementById(seleccion).style.backgroundPosition = selec;
+                        document.getElementById(seleccion).style.borderColor = "black";
+                        contador = 0;
+
+                        decreaseScore(5);
+                    }
+                    if (Math.abs(parseInt(document.getElementById(e.target.id).style.backgroundPositionX)) === parseInt(arrayPuzzleResuelto[w].x) &&
+                        Math.abs(parseInt(document.getElementById(e.target.id).style.backgroundPositionY)) === parseInt(arrayPuzzleResuelto[w].y)) {
+                        document.getElementById(e.target.id).style.borderColor = "green";
+                        contador = 0;
+                        increaseScore(5);
+                    }
+
+                    table[0].rows[j].cells[i].addEventListener("mouseout", function () {
+                        let aciertos = 0;
+                        for (let j = 0; j < table[0].rows.length; j++)
+                            for (let i = 0; i < table[0].rows.length; i++) {
+                                if (q > 0)
+                                    q = table[0].rows.length * j + (i);
+                                else
+                                    q = (j + i);
+
+                                if (parseInt(arrayPuzzleResuelto[q].x) === Math.abs(parseInt(document.getElementById(j + "," + i).style.backgroundPositionX)) &&
+                                    parseInt(arrayPuzzleResuelto[q].y) === Math.abs(parseInt(document.getElementById(j + "," + i).style.backgroundPositionY))) {
+                                    document.getElementById(j + "," + i).style.borderColor = "green";
+                                    aciertos++;
+                                }
+                            }
+
+                        if (aciertos === parseInt(numberOfPieces)) {
+                            cuentaAtras(true);
+                        }
+                    });
+
+                } else {
+                    table[0].rows[j].cells[i].removeEventListener("mousemove", function () {
+                        cuentaAtras(true);
+                    });
+                }
+            });
+        }
+}
 //MAIN
-//Llamada función inicio del programa
-/*while (getNumberPiecesFromUser() === false) {
-    getNumberPiecesFromUser();
-}*/
+function cuentaAtras(acabado) {
+    var count = 30;
+    var number = document.getElementById('time');
+    var intervalo = 0;
+    if (acabado === false)
+        intervalo = setInterval(function () {
+            count--;
+            number.innerHTML = count;
+            if (count == 0) {
+                clearInterval(intervalo);
+                if (confirm("El tiempo ha terminado.\n¿ Deseas volver a jugar ?")) {
+                    location.reload();
+                } else {
+                    alert("Fin del Juego");
+                }
+                time = true;
+            }
+        }, 1000);
+    else {
+        clearInterval(intervalo);
+        JsonData.push({
+            "puntuación": puntuacion
+        });
+        //JSON.parse(JsonData);
+        
+        /*var fs = require("fs");
 
-//PRUEBAS
+        fs.writeFile("./../json/puntuacion.json", JsonData, (err) => {
+            if (err) {
+                console.error(err);
+                return;
+            };
+            console.log("File has been created");
+        });*/
 
-createPuzzleLayout(4, 958, 1277, "url('./../cat.jpg')");
 
-/*console.log(pieceToOffset({
-    "x": 0,
-    "y": 1
-}, 4, 958, 1277));
-*/
-let array = createReferenceSolution(4, 958, 1277);
-drawContentPuzzle(array);
+        if (confirm("Enorabuena Has Ganado.\n¿ Deseas volver a jugar ?")) {
+            location.reload();
+        } else {
+            alert("Fin del Juego");
+        }
+    }
+}
+
+
+getNumberPiecesFromUser();
